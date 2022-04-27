@@ -75,7 +75,7 @@ const questions=[
   )
 }
 function showEmployees() {
-  database.viewEmployees()
+  db.viewEmployees()
     .then(([rows]) => {
       let employees = rows;
       console.log("\n");
