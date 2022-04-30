@@ -26,5 +26,6 @@
         - Help from Alistar Rowden
 
 # Video of How to Run:
-
+https://drive.google.com/file/d/1gjS0yE6_7_5UTL-iU1wjmtLh8NXwnjBo/view
 # Github:
+https://github.com/elizabethbillings93/Employee-Tracker-Commandline
