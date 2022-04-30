@@ -1,23 +1,23 @@
-USE employees
+USE employees_db;
 INSERT INTO department(name)
 VALUES
 ('Animal Trainer'),
 ('Clown'),
 ('Ring Master'),
 ('Acrobat');
-INSERT INTO position (title,role_id,salary)
+INSERT INTO position (title,salary,department_id)
 VALUES
-('Animal Trainer I',222, 20),
-('Animal Trainer II',555, 40),
-('Mini Clown',888, 4),
-('Full Sized Clown',999,8), 
-('Ring Master I',777, 100000),
-('Floor Acrobat',444, 50000), 
-('Air Acrobat',333, 100000);
-INSERT INTO employee (first_name, last_name,employee_id)
+('Animal Trainer I', 20,1),
+('Animal Trainer II', 40,1),
+('Mini Clown',4,2),
+('Full Sized Clown',8,2), 
+('Ring Master I', 100000,3),
+('Floor Acrobat', 50000,4), 
+('Air Acrobat', 100000,4);
+INSERT INTO employee (first_name, last_name,position_id, manager_id)
 VALUES 
-('Annie','Jones', 9),
-('Barbara','Woodcock', 8),
-('Gladys','Roy', 6),
-('Kittie','Smith', 4),
-('Dan','Rice', 2);
+('Annie','Jones',2, null),
+('Barbara','Woodcock',1, 9),
+('Gladys','Roy',6, 9 ),
+('Kittie','Smith',5, null),
+('Dan','Rice',7, 9);

@@ -1,5 +1,5 @@
 const connection = require("./connection");
-class database{
+class DB{
   constructor(connection){
     this.connection = connection;
   }
@@ -11,26 +11,30 @@ class database{
   }
   viewEmployees() {
     return this.connection.promise().query(
-      "SELECT employee.employee_id, employee.first_name, employee.last_name, LEFT JOIN position on employee.role_id = role.id LEFT JOIN department on position.department_id = department.id;"
-    );
+      "SELECT employee.id, employee.first_name, employee.last_name, position.title, department.name AS department, position.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN position on employee.position_id = position.id LEFT JOIN department on position.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;"
+      );
   }
   addEmployee(employee) {
-    return this.connection.promise().query("Add Employee",employee);
+    return this.connection.promise().query(
+      "INSERT INTO employee SET ?", employee);
   }
   updateEmployeeRole(employeeId) {
     return this.connection.promise().query(employeeId);
   }
   viewAllRoles() {
-    return this.connection.promise().query("SELECT position.id, position.title, department.name AS department, position.salary FROM position LEFT JOIN department on position.department_id = department.id;");
+    return this.connection.promise().query(
+      "SELECT position.id,position.title, department.name AS department, position.salary FROM position LEFT JOIN department on position.department_id = department.id;");
   }
-  addRole(position) {
+  addNewRole(position) {
     return this.connection.promise().query(position);
   }
-  addDepartment(department) {
-    return this.connection.promise().query(department);
+  addNewDepartment(department) {
+    return this.connection.promise().query(
+      `INSERT INTO department SET ?`,department
+    );
   }
 }
 
-module.exports = new database(connection);
+module.exports = new DB(connection);
 
 

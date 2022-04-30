@@ -8,11 +8,13 @@ CREATE TABLE department (
 CREATE TABLE position (
     id INT UNSIGNED AUTO_INCREMENT  NOT NULL PRIMARY KEY,
     title VARCHAR (20) NOT NULL,
-    role_id INT NOT NULL,
-    salary INT NOT NULL
+    salary INT NOT NULL,
+    department_id INT
 );
 CREATE TABLE employee(
+    id INT UNSIGNED AUTO_INCREMENT  NOT NULL PRIMARY KEY,
     first_name VARCHAR(20)NOT NULL,
     last_name VARCHAR(20)NOT NULL,
-    employee_id INT NOT NULL
+    position_id INT NOT NULL,
+    manager_id INT
 );
